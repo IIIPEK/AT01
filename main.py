@@ -1,3 +1,6 @@
+import pytest
+VOWELS = ['a', 'e', 'i', 'o', 'u', 'y', 'а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я']
+
 def add(a, b):
     return a + b
 
@@ -19,4 +22,24 @@ def modulo(a, b):
     if b == 0:
         raise ValueError("Cannot divide by zero")
     return a % b
+
+def is_vowel(a):
+    return a.lower() in VOWELS
+
+def vowel_count(a):
+    count = 0
+    for char in a:
+        if char in VOWELS:
+            count += 1
+    return count
+
+
+def test_vowel_count():
+    assert vowel_count("hello") == 2
+    assert vowel_count("world") == 0
+    assert vowel_count("aeiou") == 5
+    assert vowel_count("Привет!") == 2
+    assert vowel_count("Привет, мир!") == 3
+    assert vowel_count("Првт, мр! Кк дл?") == 0
+
 
