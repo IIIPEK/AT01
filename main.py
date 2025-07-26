@@ -1,5 +1,5 @@
 import pytest
-VOWELS = ['a', 'e', 'i', 'o', 'u', 'y', 'а', 'е', 'ё', 'и', 'о', 'у', 'ы', 'э', 'ю', 'я']
+VOWELS = set('aeiouyаеёиоуыэюяAEIOUYАЕЁИОУЫЭЮЯ')
 
 def add(a, b):
     return a + b
@@ -24,7 +24,7 @@ def modulo(a, b):
     return a % b
 
 def is_vowel(a):
-    return a.lower() in VOWELS
+    return a in VOWELS
 
 def vowel_count(a):
     count = 0
@@ -38,7 +38,7 @@ def vowel_count(a):
     ("world",1),
     ("aeiou", 5),
     ("Привет!", 2),
-    ("Привет, мир!",3),
+    ("ПРИВЕТ, мир!",3),
     ("Првт, мр! Кк дл?", 0),
 ])
 
