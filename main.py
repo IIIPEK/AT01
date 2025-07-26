@@ -33,13 +33,17 @@ def vowel_count(a):
             count += 1
     return count
 
+@pytest.mark.parametrize("test_input, expected", [
+    ("hello" ,2),
+    ("world",1),
+    ("aeiou", 5),
+    ("Привет!", 2),
+    ("Привет, мир!",3),
+    ("Првт, мр! Кк дл?", 0),
+])
 
-def test_vowel_count():
-    assert vowel_count("hello") == 2
-    assert vowel_count("world") == 0
-    assert vowel_count("aeiou") == 5
-    assert vowel_count("Привет!") == 2
-    assert vowel_count("Привет, мир!") == 3
-    assert vowel_count("Првт, мр! Кк дл?") == 0
+
+def test_vowel_count(test_input, expected):
+    assert vowel_count(test_input) == expected
 
 
